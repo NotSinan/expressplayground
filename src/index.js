@@ -9,17 +9,11 @@ mongoose.connect(process.env.DATABASE_LOGIN, () => {
     console.log("Connected to database.");
 });
 
-app.get('/', (req, res) => {
-  const comment = new Comment({
-    name: "Name",
-    email: "Email@email.com"
-  })
-  comment.save()
-  .then((response) => {
-    res.send(response)
+app.get('/comments', (req, res) => {
+  Comment.find().then((response) => {
+      res.send(response)
   })
 })
-
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
