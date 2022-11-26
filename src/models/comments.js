@@ -10,6 +10,15 @@ const commentSchema = new Schema({
     email: {
         type: String,
         required: true
+    },
+    movie_id: {
+        type: mongoose.SchemaTypes.ObjectId
+    },
+    text: {
+        type: String
+    },
+    date: {
+        type: Date
     }
 })
 
