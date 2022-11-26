@@ -27,4 +27,10 @@ router.get('/movies/genre/:genre', async (req, res) => {
     }).then((response) => res.send(response))
 })
 
+router.get('/movies/director/:dicector', async (req, res) => {
+    await Movie.find({
+        'director': `${req.params.director}`
+    }).then((response) => res.send(response))
+})
+
 module.exports = router;
