@@ -9,8 +9,22 @@ router.get('/movies', async (req, res) => {
 router.get('/movies/:title', async (req, res) => {
     const title = `${req.params.title}`
     console.log(title)
-    Movie.findOne({'title': `${req.params.title}`})
+    await Movie.findOne({'title': `${req.params.title}`})
     .then((response) => res.send(response))
+})
+
+router.get('/movies/year/:year', async (req, res) => {
+    const year = parseInt(`${req.params.year}`)
+    console.log(year)
+    await Movie.find({
+        'year': year
+    }).then((response) => res.send(response))
+})
+
+router.get('/movies/genre/:genre', async (req, res) => {
+    await Movie.find({
+        'genres': `${req.params.genre}`
+    }).then((response) => res.send(response))
 })
 
 module.exports = router;
