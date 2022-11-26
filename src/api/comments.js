@@ -7,3 +7,17 @@ router.get('/comments', (req, res) => {
         res.send(response)
     })
 })
+
+
+router.post('/', (req, res) => {
+    const newComment = Comment.create({
+        "name": `${req.body.name}`,
+        "email": `${req.body.email}`,
+        // "text": `${req.body.text}`,
+        // "date": Date.now()
+    });
+    res.send('Created new comment')
+    console.log(newComment);
+})
+
+module.exports = router;
